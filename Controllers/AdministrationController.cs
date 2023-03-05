@@ -53,7 +53,7 @@ namespace Toto_Simulator.Controllers
             IQueryable<User> users =  from u in context.Users select u;
 
             if (!string.IsNullOrEmpty(searchedName))
-            {
+            {               
                 users = users.Where(user =>
                    user.FirstName.Contains(searchedName)
                 || user.LastName.Contains(searchedName));

@@ -1,57 +1,60 @@
 ﻿@using Toto_Simulator.Models;
 @model IEnumerable<DrawViewModel>
-<a asp-controller="Draws" asp-action="CreateDraw" class="btn btn-success mb-2">Create Draw</a>
-@foreach (var draw in Model)
-{
-    <div class="card" style="width: 20rem;">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><span class="fw-bold">No: </span> @draw.Id</li>
-            <li class="list-group-item"><span class="fw-bold">Date: </span> @draw.Date</li>
-            <li class="list-group-item"><span class="fw-bold">Fund: </span> : @draw.Fund</li>
-            <li class="list-group-item">
-                    <ul class="list-group list-group-horizontal">
-                        @foreach (var num in draw.Numbers)
-                        {
-                            <li class="list-group-item">@num.Value</li>                
-                        }
+<a asp-controller="Draws" asp-action="CreateDraw" class="btn btn-success mb-2 align-self-auto">Create Draw</a>
+<div class="d-flex justify-content-around flex-lg-wrap gap-3">
+    
+    @foreach (var draw in Model)
+    {
+        <div class="card flex-column" style="width: 20rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span class="fw-bold">No: </span> @draw.Id</li>
+                <li class="list-group-item"><span class="fw-bold">Date: </span> @draw.Date</li>
+                <li class="list-group-item"><span class="fw-bold">Fund: </span> : @draw.Fund</li>
+                <li class="list-group-item">
+                        <ul class="list-group list-group-horizontal">
+                            @foreach (var num in draw.Numbers)
+                            {
+                                <li class="list-group-item">@num.Value</li>                
+                            }
+                        </ul>
+                </li>
+                <li class="list-group-item">
+                   <ul class="list-group list-group-horizontal">
+
+                        <li class="list-group-item"><span class="fw-bold">1. Winners: </span>@draw.FirstGroupWinners</li>
+                        <li class="list-group-item"><span class="fw-bold">Generated sum: </span>@draw.FirstGroupSum</li>
+
                     </ul>
-            </li>
-            <li class="list-group-item">
-               <ul class="list-group list-group-horizontal">
+                </li>
+                <li class="list-group-item">
+                   <ul class="list-group list-group-horizontal">
 
-                    <li class="list-group-item"><span class="fw-bold">1. Winners: </span>@draw.FirstGroupWinners</li>
-                    <li class="list-group-item"><span class="fw-bold">Generated sum: </span>@draw.FirstGroupSum</li>
+                        <li class="list-group-item"><span class="fw-bold">2. Winners: </span>@draw.SecondGroupWinners</li>
+                        <li class="list-group-item"><span class="fw-bold">Generated sum: </span>@draw.SecondGroupSum</li>
 
-                </ul>
-            </li>
-            <li class="list-group-item">
-               <ul class="list-group list-group-horizontal">
+                    </ul>
+                </li>
+                <li class="list-group-item">
+                   <ul class="list-group list-group-horizontal">
 
-                    <li class="list-group-item"><span class="fw-bold">2. Winners: </span>@draw.SecondGroupWinners</li>
-                    <li class="list-group-item"><span class="fw-bold">Generated sum: </span>@draw.SecondGroupSum</li>
+                        <li class="list-group-item"><span class="fw-bold">3. Winners: </span>@draw.ThirdGroupWinners</li>
+                        <li class="list-group-item"><span class="fw-bold">Generated sum: </span>@draw.ThirdGroupSum</li>
 
-                </ul>
-            </li>
-            <li class="list-group-item">
-               <ul class="list-group list-group-horizontal">
+                    </ul>
+                </li>
+                <li class="list-group-item">
+                   <ul class="list-group list-group-horizontal">
 
-                    <li class="list-group-item"><span class="fw-bold">3. Winners: </span>@draw.ThirdGroupWinners</li>
-                    <li class="list-group-item"><span class="fw-bold">Generated sum: </span>@draw.ThirdGroupSum</li>
+                        <li class="list-group-item"><span class="fw-bold">4. Winners: </span>@draw.FourthGroupWinners</li>
+                        <li class="list-group-item"><span class="fw-bold">Generated sum: </span>@draw.FourthGroupSum</li>
 
-                </ul>
-            </li>
-            <li class="list-group-item">
-               <ul class="list-group list-group-horizontal">
-
-                    <li class="list-group-item"><span class="fw-bold">4. Winners: </span>@draw.FourthGroupWinners</li>
-                    <li class="list-group-item"><span class="fw-bold">Generated sum: </span>@draw.FourthGroupSum</li>
-
-                </ul>
-            </li>
-            <li class="list-group-item">
-                <span class="fw-bold">Actions: </span> <a asp-controller="Draws" asp-action="Details" asp-route-id="@draw.Id" class="btn btn-success mb-2">Details</a>
-                <span></span>             
-            </li>
-        </ul>
-    </div>
-}
+                    </ul>
+                </li>
+                <li class="list-group-item">
+                    <span class="fw-bold">Actions: </span> <a asp-controller="Draws" asp-action="Details" asp-route-id="@draw.Id" class="btn btn-success mb-2">Details</a>
+                    <span></span>             
+                </li>
+            </ul>
+        </div>
+    }
+</div>
