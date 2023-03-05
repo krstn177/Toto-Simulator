@@ -1,0 +1,85 @@
+﻿@using Toto_Simulator.Data.Entities;
+@model User;
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            @*<a asp-area="" asp-controller="Task" asp-action="Index"><b>Kan</b>ban</a>*@
+        </div>
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Edit user</p>
+
+                <form asp-controller="Administration" asp-action="Edit" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    @*<div class="input-group mb-3">
+                        <input asp-for="FirstName" autocomplete="username" type="text" class="form-control" placeholder="First Name">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <span asp-validation-for="FirstName" class="text-danger mb-xl-5"></span>
+                    <div class="input-group mb-3">
+                        <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                    *@
+
+                    <div class="input-group mb-3">
+                        <input asp-for="UserName" type="text" class="form-control" placeholder="Username">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+
+                    <div class="input-group mb-3">
+                        <input asp-for="Earnings" type="number" class="form-control" placeholder="Earnings">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Earnings" class="text-danger"></span>
+
+                    <div class="input-group mb-3">
+                        <input asp-for="Email" type="text" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+
+
+
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+

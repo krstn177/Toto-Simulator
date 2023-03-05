@@ -1,0 +1,21 @@
+﻿@using Toto_Simulator.Models;
+@model IEnumerable<TicketViewModel>
+@foreach (var ticket in Model)
+{
+    <div class="card" style="width: 20rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span class="fw-bold">Date: </span> @ticket.Date</li>
+            <li class="list-group-item"><span class="fw-bold">Price: </span> : @ticket.Price</li>
+            <li class="list-group-item"><span class="fw-bold">Draw Id: </span> : @ticket.DrawId</li>
+            <li class="list-group-item"><span class="fw-bold">Player: </span> : @ticket.Owner.UserName</li>
+            @foreach (var num in ticket.Numbers)
+            {
+                <li class="list-group-item">@num.Value</li>                
+            }
+            <li class="list-group-item">
+                <span class="fw-bold">Actions: </span> <a asp-controller="Draws" asp-action="Details" asp-route-id="@ticket.DrawId" class="btn btn-success mb-2">Draw Details</a>
+                <span></span>             
+            </li>
+        </ul>
+    </div>
+}

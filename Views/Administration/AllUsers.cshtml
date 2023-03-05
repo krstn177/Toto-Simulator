@@ -1,0 +1,68 @@
+﻿@using Toto_Simulator.Models
+@model IEnumerable<UserListViewModel>
+
+@{
+    ViewData["Title"] = "Потребители";
+}
+
+<title>@ViewBag.Title</title>
+
+<div class="col-5 text-center" style="width: 70%; margin-left: auto; margin-right: auto; margin-top: 40px">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Всички потребители</h3>
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 300px;">
+                    <form asp-controller="Administration" asp-action="AllUsers" style="display: block; margin: 0 auto;">
+                        <input type="text" name="searchedName" class="form-control float-right" placeholder="Търси" style="margin: 0 auto; width: 100%">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <a asp-action="AllUsers" asp-route-sortOrder="@ViewData["NameSortParam"]">Сортирай по име</a>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <th>Име</th>
+                        <th>Потребителско име</th>
+                        <th>E-Mail</th>
+                        <th>Действия</th>
+                        <th>Печалба</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Name</td>
+                            <td>@user.Username</td>
+                            <td>@user.Email</td>
+                            <td>
+                                <a asp-action="Edit" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning">
+                                    <i class="fas fa-edit"></i> Редакция
+                                </a>
+                                @if (user.Roles.FirstOrDefault() == "Admin")
+                                {
+                                    @*<a asp-area="Admin" asp-action="MakeAdmin" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning"><i class="fas fa-edit"></i>Make Admin</a>*@
+                                    <a asp-action="MakePlayer" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning"><i class="fas fa-edit"></i>Направи Играч</a>
+                                }
+                                @if (user.Roles.FirstOrDefault() == "Player")
+                                {
+                                    <a asp-action="MakeAdmin" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning"><i class="fas fa-edit"></i>Направи Администратор</a>
+                                    @*<a asp-area="Admin" asp-action="MakeDeveloper" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning"><i class="fas fa-edit"></i>Make Developer</a>*@
+                                }
+                            </td>
+                            <td>@user.Earnings</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
