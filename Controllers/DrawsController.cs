@@ -109,13 +109,13 @@ namespace Toto_Simulator.Controllers
                 }
             }
             //Populate the winners and their sums
-            var fourthGroup = this.data.Tickets.Where(x => x.IsInFourthGroup == true);
+            var fourthGroup = currentTickets.Where(x => x.IsInFourthGroup);
             decimal fourthGroupSingleSum = fourthGroup.Count() != 0 ? oldDraw.FourthGroupSum / fourthGroup.Count() : 0;
-            var thirdGroup = this.data.Tickets.Where(x => x.IsInThirdGroup == true);
+            var thirdGroup = currentTickets.Where(x => x.IsInThirdGroup);
             decimal thirdGroupSingleSum = thirdGroup.Count() != 0 ? oldDraw.ThirdGroupSum / thirdGroup.Count() : 0;
-            var secondGroup = this.data.Tickets.Where(x => x.IsInSecondGroup == true);
+            var secondGroup = currentTickets.Where(x => x.IsInSecondGroup);
             decimal secondGroupSingleSum = secondGroup.Count() != 0 ? oldDraw.SecondGroupSum / secondGroup.Count() : 0;
-            var firstGroup = this.data.Tickets.Where(x => x.IsInFirstGroup == true);
+            var firstGroup = currentTickets.Where(x => x.IsInFirstGroup);
             decimal firstGroupSingleSum = firstGroup.Count() != 0 ? oldDraw.FirstGroupSum / firstGroup.Count() : 0;
             //Give the people their money
             foreach (var ticket in fourthGroup)
@@ -197,13 +197,27 @@ namespace Toto_Simulator.Controllers
             }
             Array.Sort(selectedNumbers);
 
-            for (int x = 0; x < selectedNumbers.Length; x++)
-            {
-                var number = data.Numbers.Where(n => n.Value == selectedNumbers[x]).FirstOrDefault();
-                number.Ocurrences++;
-                currentDraw.Numbers.Add(number);
-            }
+            //for (int x = 0; x < selectedNumbers.Length; x++)
+            //{
+            //    var number = data.Numbers.Where(n => n.Value == selectedNumbers[x]).FirstOrDefault();
+            //    number.Ocurrences++;
+            //    currentDraw.Numbers.Add(number);
+            //}
 
+            //Test for winnings
+            var num1 = data.Numbers.Where(n => n.Value == 1).FirstOrDefault();
+            var num2 = data.Numbers.Where(n => n.Value == 2).FirstOrDefault();
+            var num3 = data.Numbers.Where(n => n.Value == 3).FirstOrDefault();
+            var num4 = data.Numbers.Where(n => n.Value == 4).FirstOrDefault();
+            var num5 = data.Numbers.Where(n => n.Value == 5).FirstOrDefault();
+            var num6 = data.Numbers.Where(n => n.Value == 6).FirstOrDefault();
+
+            currentDraw.Numbers.Add(num1);
+            currentDraw.Numbers.Add(num2);
+            currentDraw.Numbers.Add(num3);
+            currentDraw.Numbers.Add(num4);
+            currentDraw.Numbers.Add(num5);
+            currentDraw.Numbers.Add(num6);
         }
     }
 }
