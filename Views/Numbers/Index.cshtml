@@ -1,0 +1,16 @@
+﻿@using Toto_Simulator.Data.Entities
+@model IEnumerable<Number>
+@{
+    ViewData["Title"] = "Числа";
+}
+<div class="d-flex justify-content-around flex-lg-wrap gap-3">
+    @foreach (var number in Model)
+    {
+        <div class="card flex-column" style="width: 15rem;">
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item"><span class="fw-bold">Число: </span> @number.Value</li>
+                <li class="list-group-item"><span class="fw-bold">Срещания: </span> : @number.Ocurrences</li>                                           
+            </ul>
+        </div>
+    }
+</div>

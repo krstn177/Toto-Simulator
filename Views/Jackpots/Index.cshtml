@@ -1,0 +1,20 @@
+﻿@using Toto_Simulator.Data.Entities
+@model IQueryable<Jackpot>
+@{
+    ViewData["Title"] = "Джакпоти";
+}
+<a asp-action="Index" asp-route-idSortOrder="@ViewData["IdSortParam"]">Сортирай по номер</a>
+<a asp-action="Index" asp-route-SumSortOrder="@ViewData["SumSortParam"]">Сортирай по сума</a>
+
+
+<div class="d-flex justify-content-around flex-lg-wrap gap-3">  
+    @foreach (var jackpot in Model)
+    {
+        <div class="card flex-column" style="width: 20rem;">
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item"><span class="fw-bold">Номер на джакпот: </span> @jackpot.Id</li>
+                <li class="list-group-item"><span class="fw-bold">Натрупана сума: </span> : @jackpot.AccumulatedSum</li>
+            </ul>
+        </div>
+    }
+</div>

@@ -1,8 +1,10 @@
 ﻿@using Toto_Simulator.Models;
 @model IEnumerable<DrawViewModel>
+@{
+    ViewData["Title"] = "Тиражи";
+}
 <a asp-controller="Draws" asp-action="CreateDraw" class="btn btn-success mb-2 align-self-auto">Create Draw</a>
-<div class="d-flex justify-content-around flex-lg-wrap gap-3">
-    
+<div class="d-flex justify-content-start flex-lg-wrap gap-3">    
     @foreach (var draw in Model)
     {
         <div class="card flex-column" style="width: 20rem;">
@@ -49,11 +51,7 @@
                         <li class="list-group-item"><span class="fw-bold">Generated sum: </span>@draw.FourthGroupSum</li>
 
                     </ul>
-                </li>
-                <li class="list-group-item">
-                    <span class="fw-bold">Actions: </span> <a asp-controller="Draws" asp-action="Details" asp-route-id="@draw.Id" class="btn btn-success mb-2">Details</a>
-                    <span></span>             
-                </li>
+                </li>                
             </ul>
         </div>
     }

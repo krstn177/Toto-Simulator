@@ -17,11 +17,7 @@ namespace Toto_Simulator.Controllers
         {
             this.data = context;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        
         public IActionResult All()
         {
             var draws = this.data.Draws.Select(d => new DrawViewModel()
@@ -85,9 +81,7 @@ namespace Toto_Simulator.Controllers
                     for (int j = 0; j <= 5; j++)
                     {
                         if (oldDraw.Numbers[i].Value == ticket.Numbers[j].Value)
-                        {
-                            var num = this.data.Numbers.Where(x => x.Value == ticket.Numbers[j].Value).FirstOrDefault();
-                            num.Ocurrences++;
+                        {                           
                             matches++;
                         }
                     }
@@ -206,6 +200,7 @@ namespace Toto_Simulator.Controllers
             for (int x = 0; x < selectedNumbers.Length; x++)
             {
                 var number = data.Numbers.Where(n => n.Value == selectedNumbers[x]).FirstOrDefault();
+                number.Ocurrences++;
                 currentDraw.Numbers.Add(number);
             }
 
