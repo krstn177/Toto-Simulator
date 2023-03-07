@@ -60,7 +60,7 @@ namespace Toto_Simulator.Controllers
         [HttpPost]        
         public ActionResult Create(TicketFormModel ticketModel)
         {
-            string currentUserId = GetUserId();
+            string currentUserId = GetUserId();           
             var currentDraw = this.data.Draws.OrderBy(d => d.Date).Last();
 
 
@@ -79,7 +79,7 @@ namespace Toto_Simulator.Controllers
                 Price = ticketModel.Price,
                 DrawId = currentDraw.Id,
                 Date = DateTime.Now,                
-                OwnerId = currentUserId
+                OwnerId = currentUserId,                
             };
 
             if (HasDuplicates(chosenNums))

@@ -7,11 +7,11 @@ namespace Toto_Simulator.Data.Entities
     {
         [Required]
         [MaxLength(MaxUserFirstName)]
-        public string FirstName { get; init; }
+        public string FirstName { get; set; }
 
         [Required]
         [MaxLength(MaxUserLastName)]
-        public string LastName { get; init; }
+        public string LastName { get; set; }
 
         public decimal Earnings { get; set; }
 

@@ -56,7 +56,7 @@ namespace Toto_Simulator.Controllers
             GenerateWinningNumbers(oldDraw);
             //Make fund
             decimal fund = 0;
-            var currentTickets = this.data.Tickets.Include(t => t.Numbers).Where(t => t.DrawId == oldDraw.Id);
+            var currentTickets = this.data.Tickets.Include(t => t.Numbers).Where(t => t.DrawId == oldDraw.Id).ToList();
             foreach (var ticket in currentTickets)
             {
                 fund += ticket.Price;
@@ -197,27 +197,27 @@ namespace Toto_Simulator.Controllers
             }
             Array.Sort(selectedNumbers);
 
-            //for (int x = 0; x < selectedNumbers.Length; x++)
-            //{
-            //    var number = data.Numbers.Where(n => n.Value == selectedNumbers[x]).FirstOrDefault();
-            //    number.Ocurrences++;
-            //    currentDraw.Numbers.Add(number);
-            //}
+            for (int x = 0; x < selectedNumbers.Length; x++)
+            {
+                var number = data.Numbers.Where(n => n.Value == selectedNumbers[x]).FirstOrDefault();
+                number.Ocurrences++;
+                currentDraw.Numbers.Add(number);
+            }
 
             //Test for winnings
-            var num1 = data.Numbers.Where(n => n.Value == 1).FirstOrDefault();
-            var num2 = data.Numbers.Where(n => n.Value == 2).FirstOrDefault();
-            var num3 = data.Numbers.Where(n => n.Value == 3).FirstOrDefault();
-            var num4 = data.Numbers.Where(n => n.Value == 4).FirstOrDefault();
-            var num5 = data.Numbers.Where(n => n.Value == 5).FirstOrDefault();
-            var num6 = data.Numbers.Where(n => n.Value == 6).FirstOrDefault();
+            //var num1 = data.Numbers.Where(n => n.Value == 1).FirstOrDefault();
+            //var num2 = data.Numbers.Where(n => n.Value == 2).FirstOrDefault();
+            //var num3 = data.Numbers.Where(n => n.Value == 3).FirstOrDefault();
+            //var num4 = data.Numbers.Where(n => n.Value == 4).FirstOrDefault();
+            //var num5 = data.Numbers.Where(n => n.Value == 5).FirstOrDefault();
+            //var num6 = data.Numbers.Where(n => n.Value == 6).FirstOrDefault();
 
-            currentDraw.Numbers.Add(num1);
-            currentDraw.Numbers.Add(num2);
-            currentDraw.Numbers.Add(num3);
-            currentDraw.Numbers.Add(num4);
-            currentDraw.Numbers.Add(num5);
-            currentDraw.Numbers.Add(num6);
+                //currentDraw.Numbers.Add(num1);
+                //currentDraw.Numbers.Add(num2);
+                //currentDraw.Numbers.Add(num3);
+                //currentDraw.Numbers.Add(num4);
+                //currentDraw.Numbers.Add(num5);
+                //currentDraw.Numbers.Add(num6);
         }
     }
 }

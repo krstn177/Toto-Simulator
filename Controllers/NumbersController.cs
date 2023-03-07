@@ -11,11 +11,18 @@ namespace Toto_Simulator.Controllers
         { 
             this.data = context;
         }
-        public IActionResult Index()
+        public IActionResult All()
         {
             var numbers = this.data.Numbers;
 
             return View(numbers);
+        }
+
+        public IActionResult Index(int searchedNum)
+        {
+            var number = this.data.Numbers.Find(searchedNum);
+                        
+            return View(number);
         }
     }
 }

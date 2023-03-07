@@ -118,6 +118,8 @@ namespace Toto_Simulator.Controllers
             user.UserName = userModel.UserName;
             user.Earnings = userModel.Earnings;
             user.Email = userModel.Email;
+            user.FirstName = userModel.FirstName;
+            user.LastName = userModel.LastName;
 
             this.context.SaveChanges();
             return RedirectToAction("AllUsers", "Administration");

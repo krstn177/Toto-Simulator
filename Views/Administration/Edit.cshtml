@@ -7,16 +7,14 @@
 
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="login-logo">
-            @*<a asp-area="" asp-controller="Task" asp-action="Index"><b>Kan</b>ban</a>*@
-        </div>
+        
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Edit user</p>
 
                 <form asp-controller="Administration" asp-action="Edit" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                    @*<div class="input-group mb-3">
+                    <div class="input-group mb-3">
                         <input asp-for="FirstName" autocomplete="username" type="text" class="form-control" placeholder="First Name">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -35,8 +33,7 @@
                         </div>
                     </div>
                     <span asp-validation-for="LastName" class="text-danger"></span>
-                    *@
-
+                    
                     <div class="input-group mb-3">
                         <input asp-for="UserName" type="text" class="form-control" placeholder="Username">
                         <div class="input-group-append">
@@ -48,7 +45,7 @@
                     <span asp-validation-for="UserName" class="text-danger"></span>
 
                     <div class="input-group mb-3">
-                        <input asp-for="Earnings" type="number" class="form-control" placeholder="Earnings">
+                        <input asp-for="Earnings" type="number" step="0.01" class="form-control" placeholder="Earnings">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
