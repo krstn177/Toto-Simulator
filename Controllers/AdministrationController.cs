@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using Toto_Simulator.Data;
 using Toto_Simulator.Data.Entities;
 using Toto_Simulator.Models;
@@ -46,7 +47,7 @@ namespace Toto_Simulator.Controllers
         //}
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AllUsers(string searchedName, string sortOrder)
+        public IActionResult AllUsers(string searchedName, string sortOrder, int? pageIndex, int pageSize = 5)
         {
             ViewData["NameSortParam"] = string.IsNullOrEmpty(sortOrder) ? "desc" : "";
 
@@ -74,11 +75,9 @@ namespace Toto_Simulator.Controllers
                     Email = u.Email,
                     Roles = userManager.GetRolesAsync(u).Result,
                     Earnings = u.Earnings
-                })                
-                .ToList();
-
-
-            return View(displayUsers);
+                });
+            
+            return View(PaginatedList<UserListViewModel>.Create(displayUsers, pageIndex ?? 1, pageSize));
         }
 
         [Authorize(Roles = "Admin")]

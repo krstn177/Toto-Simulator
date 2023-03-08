@@ -18,8 +18,11 @@ namespace Toto_Simulator.Controllers
         {
             this.data = context;
         }
+      
+
         // GET: TicketsController
-        public ActionResult Index(string sortOrder)
+        [HttpGet]
+        public IActionResult Index(string sortOrder, int? pageIndex, int pageSize = 5)
         {
             ViewData["IdSortParam"] = string.IsNullOrEmpty(sortOrder) ? "desc" : "";
 
@@ -40,16 +43,10 @@ namespace Toto_Simulator.Controllers
                 "desc" => tickets.OrderByDescending(j => j.Id),
                 _ => tickets.OrderBy(j => j.Id),
             };
-
-            return View(tickets.ToList());          
+           
+            return View(PaginatedList<TicketViewModel>.Create(tickets, pageIndex ?? 1, pageSize));
         }
-
-        // GET: TicketsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-       
+            
         public ActionResult Create()
         {
             var numbersValues = this.data.Numbers.Select(n => n.Value);

@@ -1,11 +1,13 @@
 ﻿@using Toto_Simulator.Models
-@model IEnumerable<UserListViewModel>
+@model PaginatedList<UserListViewModel>
 
 @{
     ViewData["Title"] = "Потребители";
 }
 
 <title>@ViewBag.Title</title>
+
+
 
 <div class="col-5 text-center" style="width: 70%; margin-left: auto; margin-right: auto; margin-top: 40px">
     <div class="card">
@@ -22,9 +24,14 @@
                         </div>
                     </form>
                 </div>
+                <div class="mb-3" style="margin: 0 auto;">
+                    <a asp-action="AllUsers" asp-route-pageSize="5" class="btn btn-outline-warning mx-1">5</a>
+                    <a asp-action="AllUsers" asp-route-pageSize="10" class="btn btn-outline-warning mx-1">10</a>
+                    <a asp-action="AllUsers" asp-route-pageSize="15" class="btn btn-outline-warning mx-1">15</a>
+                </div>
+                <a asp-action="AllUsers" asp-route-sortOrder="@ViewData["NameSortParam"]" class="btn btn-outline-warning">Сортирай по име</a>
             </div>
         </div>
-        <a asp-action="AllUsers" asp-route-sortOrder="@ViewData["NameSortParam"]" class="btn btn-outline-warning">Сортирай по име</a>
         <div class="card-body table-responsive p-0">
             <table class="table table-hover text-nowrap">
                 <thead>
@@ -64,5 +71,19 @@
                 </tbody>
             </table>
         </div>
+        @{
+            string prevActive = Model.HasPreviousPage ? "active" : "disabled";
+            string nextActive = Model.HasNextPage ? "active" : "disabled";
+
+        }
+
+        <ul class="pagination justify-content-center">
+            <li class="page-item @prevActive">
+                <a asp-action="Index" asp-route-pageIndex="@(Model.PageIndex - 1)" class="page-link">Назад</a>
+            </li>
+            <li class="page-item @nextActive">
+                <a asp-action="Index" asp-route-pageIndex="@(Model.PageIndex + 1)" class="page-link">Напред</a>
+            </li>
+        </ul>        
     </div>
 </div>
