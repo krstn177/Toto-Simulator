@@ -1,7 +1,7 @@
 ﻿@using Toto_Simulator.Models;
 @model TicketFormModel
 @{
-    ViewBag.Title = "Add Task";
+    ViewBag.Title = "Попълни талон";
 }
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
@@ -11,7 +11,7 @@
 
 
             <div class="mb-3">
-                <label asp-for="Price" class="form-label">Price</label>
+                <label asp-for="Price" class="form-label">Цена</label>
                 <input asp-for="Price" type="number" class="form-control" aria-required="true" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
@@ -20,7 +20,7 @@
 
 
 
-            <label asp-for="First" class="form-label">First</label>
+            <label asp-for="First" class="form-label">Първо число</label>
             <select asp-for="First" class="form-control">
                 @for (int i = 1; i < 50; i++)
                 {
@@ -31,7 +31,7 @@
 
 
 
-            <label asp-for="Second" class="form-label">Second</label>
+            <label asp-for="Second" class="form-label">Второ число</label>
             <select asp-for="Second" class="form-control">
                 @for (int i = 1; i < 50; i++)
                 {
@@ -42,7 +42,7 @@
 
 
 
-            <label asp-for="Third" class="form-label">Third</label>
+            <label asp-for="Third" class="form-label">Трето число</label>
             <select asp-for="Third" class="form-control">
                 @for (int i = 1; i < 50; i++)
                 {
@@ -53,7 +53,7 @@
 
 
 
-            <label asp-for="Fourth" class="form-label">Fourth</label>
+            <label asp-for="Fourth" class="form-label">Четвърто число</label>
             <select asp-for="Fourth" class="form-control">
                 @for (int i = 1; i < 50; i++)
                 {
@@ -64,7 +64,7 @@
 
 
 
-            <label asp-for="Fifth" class="form-label">Fifth</label>
+            <label asp-for="Fifth" class="form-label">Пето число</label>
             <select asp-for="Fifth" class="form-control">
                 @for (int i = 1; i < 50; i++)
                 {
@@ -75,7 +75,7 @@
 
 
 
-            <label asp-for="Sixth" class="form-label">Sixth</label>
+            <label asp-for="Sixth" class="form-label">Шесто число</label>
             <select asp-for="Sixth" class="form-control">
                 @for (int i = 1; i < 50; i++)
                 {
@@ -85,8 +85,8 @@
             <span asp-validation-for="Sixth" class="text-danger"></span>
 
 
-            <div class="mb-3">
-                <input class="btn btn-primary" type="submit" value="Create" />
+            <div class="mb-3 mt-3">
+                <input class="btn btn-success" type="submit" value="Попълни" />
             </div>
 
         </form>
