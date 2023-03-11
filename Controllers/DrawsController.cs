@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using Toto_Simulator.Data;
 using Toto_Simulator.Data.Entities;
@@ -46,6 +48,87 @@ namespace Toto_Simulator.Controllers
         //    Timer timer1 = new Timer(CreateDraw, null, 0, interval);
         //    return RedirectToAction("All", "DrawsController");
         //}
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            var draw = this.data.Draws.Where(d => d.Id == id).FirstOrDefault();
+            if (id == null || this.data.Draws == null)
+            {
+                return NotFound();
+            }
+
+
+            if (draw == null)
+            {
+                return NotFound();
+            }
+
+            DrawFormModel drawModel = new DrawFormModel()
+            {
+                Fund = draw.Fund,
+                FirstGroupWinners = draw.FirstGroupWinners,
+                FirstGroupSum = draw.FirstGroupSum,
+                SecondGroupWinners = draw.SecondGroupWinners,
+                SecondGroupSum = draw.SecondGroupSum,
+                ThirdGroupWinners = draw.ThirdGroupWinners,
+                ThirdGroupSum = draw.ThirdGroupSum,
+                FourthGroupWinners = draw.FourthGroupWinners,
+                FourthGroupSum = draw.FourthGroupSum             
+            };
+
+            return View(drawModel);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Edit(int id, DrawFormModel drawModel)
+        {
+            var draw = this.data.Draws.Where(d => d.Id == id).FirstOrDefault();
+            if (draw == null)
+            {
+                return BadRequest();
+            }
+            
+
+            draw.Fund = drawModel.Fund;
+            draw.FirstGroupWinners = drawModel.FirstGroupWinners;
+            draw.FirstGroupSum = drawModel.FirstGroupSum;
+            draw.SecondGroupWinners = drawModel.SecondGroupWinners;
+            draw.SecondGroupSum = drawModel.SecondGroupSum;
+            draw.ThirdGroupWinners = drawModel.ThirdGroupWinners;
+            draw.ThirdGroupSum = drawModel.ThirdGroupSum;
+            draw.FourthGroupWinners = drawModel.FourthGroupWinners;
+            draw.FourthGroupSum = drawModel.FourthGroupSum;
+           
+
+            this.data.SaveChanges();
+            return RedirectToAction("All", "Draws");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int? id)
+        {
+            Draw draw = this.data.Draws.Find(id);
+            if (draw == null || draw == this.data.Draws.ToList().OrderByDescending(d => d.Date).FirstOrDefault())
+            {
+                return BadRequest();
+            }
+
+            var drawTickets = this.data.Tickets.Where(t => t.DrawId == draw.Id);
+            if (drawTickets.Any())
+            {
+                foreach (var ticket in drawTickets)
+                {
+                    this.data.Tickets.Remove(ticket);
+                }
+            }
+
+            this.data.Draws.Remove(draw);
+            this.data.SaveChanges();
+            return RedirectToAction("All", "Draws");
+        }
 
         public IActionResult CreateDraw()
         {

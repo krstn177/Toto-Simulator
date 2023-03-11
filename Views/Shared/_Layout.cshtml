@@ -31,7 +31,10 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Administration" asp-action="AllUsers">Всички потребители</a>
-                            </li>                           
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="AllTickets">Всички талони</a>
+                            </li>
                         }
                         @if (this.User.IsInRole("Player"))
                         {

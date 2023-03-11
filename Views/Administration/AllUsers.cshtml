@@ -64,6 +64,9 @@
                                     <a asp-action="MakeAdmin" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning"><i class="fas fa-edit"></i>Направи Администратор</a>
                                     @*<a asp-area="Admin" asp-action="MakeDeveloper" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning"><i class="fas fa-edit"></i>Make Developer</a>*@
                                 }
+                                <form asp-action="Delete" asp-route-id="@user.Id" style="display: inline">
+                                    <input type="submit" value="Изтриване" class="btn btn-warning" />
+                                </form>
                             </td>
                             <td>@user.Earnings</td>
                         </tr>

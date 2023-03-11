@@ -15,5 +15,6 @@ namespace Toto_Simulator.Models
         public User Owner { get; init; }
 
         public List<Number> Numbers { get; set; } = new List<Number>(6);
-    }
+       
+}
 }

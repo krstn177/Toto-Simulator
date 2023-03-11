@@ -1,0 +1,79 @@
+﻿@using Toto_Simulator.Models;
+@model DrawFormModel;
+
+@{
+    ViewData["Title"] = "Редакция на тираж";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-action="Edit" method="post">
+
+
+            <div class="mb-3">
+                <label asp-for="Fund" class="form-label">Награден фонд</label>
+                <input asp-for="Fund" step="0.01" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="Fund" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FirstGroupWinners" class="form-label">Победители от първа група</label>
+                <input asp-for="FirstGroupWinners" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="FirstGroupWinners" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FirstGroupSum" class="form-label">Награден фонд за първа група</label>
+                <input asp-for="FirstGroupSum" step="0.01" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="FirstGroupSum" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="SecondGroupWinners" class="form-label">Победители от втора група</label>
+                <input asp-for="SecondGroupWinners" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="SecondGroupWinners" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="SecondGroupSum" class="form-label">Награден фонд за втора група</label>
+                <input asp-for="SecondGroupSum" step="0.01" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="SecondGroupSum" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ThirdGroupWinners" class="form-label">Победители от трета група</label>
+                <input asp-for="ThirdGroupWinners" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="ThirdGroupWinners" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ThirdGroupSum" class="form-label">Награден фонд за трета група</label>
+                <input asp-for="ThirdGroupSum" step="0.01" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="ThirdGroupSum" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FourthGroupWinners" class="form-label">Победители от четвърта група</label>
+                <input asp-for="FourthGroupWinners" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="FourthGroupWinners" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FourthGroupSum" class="form-label">Награден фонд за четвърта група</label>
+                <input asp-for="FourthGroupSum" step="0.01" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="FourthGroupSum" class="text-danger"></span>
+            </div>
+
+
+            <div class="mb-3 mt-3">
+                <input class="btn btn-success" type="submit" value="Редактирай" />
+            </div>
+
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+ }

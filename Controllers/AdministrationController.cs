@@ -124,6 +124,39 @@ namespace Toto_Simulator.Controllers
             return RedirectToAction("AllUsers", "Administration");
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(string? id)
+        {
+            var user =  await userManager.FindByIdAsync(id);
+            var rolesForUser = await userManager.GetRolesAsync(user);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            if (rolesForUser.Count() > 0)
+            {
+                foreach (var item in rolesForUser.ToList())
+                {
+                    // item should be the name of the role
+                    var result = await userManager.RemoveFromRoleAsync(user, item);
+                }
+            }
+            var userTickets = this.context.Tickets.Where(t => t.OwnerId == user.Id);
+
+            if (userTickets != null)
+            {
+                foreach (var ticket in userTickets)
+                {
+                    this.context.Tickets.Remove(ticket);
+                }
+            }           
+            await userManager.DeleteAsync(user);
+            this.context.SaveChanges();
+            return RedirectToAction("AllUsers", "Administration");
+        }
+
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> MakeAdmin(string id)
         {

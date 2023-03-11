@@ -1,0 +1,95 @@
+﻿@using Toto_Simulator.Models;
+@model TicketFormModel;
+
+@{
+    ViewData["Title"] = "Редакция на талон";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-action="Edit" method="post">
+
+
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label">Цена</label>
+                <input asp-for="Price" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <label asp-for="First" class="form-label">Първо число</label>
+            <select asp-for="First" class="form-control">
+                @for (int i = 1; i < 50; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <span asp-validation-for="First" class="text-danger"></span>
+
+
+
+            <label asp-for="Second" class="form-label">Второ число</label>
+            <select asp-for="Second" class="form-control">
+                @for (int i = 1; i < 50; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <span asp-validation-for="Second" class="text-danger"></span>
+
+
+
+            <label asp-for="Third" class="form-label">Трето число</label>
+            <select asp-for="Third" class="form-control">
+                @for (int i = 1; i < 50; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <span asp-validation-for="Third" class="text-danger"></span>
+
+
+
+            <label asp-for="Fourth" class="form-label">Четвърто число</label>
+            <select asp-for="Fourth" class="form-control">
+                @for (int i = 1; i < 50; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <span asp-validation-for="Fourth" class="text-danger"></span>
+
+
+
+            <label asp-for="Fifth" class="form-label">Пето число</label>
+            <select asp-for="Fifth" class="form-control">
+                @for (int i = 1; i < 50; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <span asp-validation-for="Fifth" class="text-danger"></span>
+
+
+
+            <label asp-for="Sixth" class="form-label">Шесто число</label>
+            <select asp-for="Sixth" class="form-control">
+                @for (int i = 1; i < 50; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <span asp-validation-for="Sixth" class="text-danger"></span>
+
+
+            <div class="mb-3 mt-3">
+                <input class="btn btn-success" type="submit" value="Попълни" />
+            </div>
+
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+ }
