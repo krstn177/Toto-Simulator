@@ -7,7 +7,7 @@ namespace Toto_Simulator.Models
         public int Id { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Фонда трябва да е положително число")]
+        [Range(0.00, double.MaxValue, ErrorMessage = "Фонда трябва да е положително число")]
         public decimal Fund { get; set; }
 
         [Required]
@@ -15,7 +15,7 @@ namespace Toto_Simulator.Models
         public int FirstGroupWinners { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Сумата трябва да е положително число")]
+        [Range(0.00, double.MaxValue, ErrorMessage = "Сумата трябва да е положително число")]
         public decimal FirstGroupSum { get; set; }
 
         [Required]
@@ -23,7 +23,7 @@ namespace Toto_Simulator.Models
         public int SecondGroupWinners { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Сумата трябва да е положително число")]
+        [Range(0.00, double.MaxValue, ErrorMessage = "Сумата трябва да е положително число")]
         public decimal SecondGroupSum { get; set; }
 
         [Required]
@@ -31,7 +31,7 @@ namespace Toto_Simulator.Models
         public int ThirdGroupWinners { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Сумата трябва да е положително число")]
+        [Range(0.00, double.MaxValue, ErrorMessage = "Сумата трябва да е положително число")]
         public decimal ThirdGroupSum { get; set; }
 
         [Required]
@@ -39,7 +39,7 @@ namespace Toto_Simulator.Models
         public int FourthGroupWinners { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Сумата трябва да е положително число")]
+        [Range(0.00, double.MaxValue, ErrorMessage = "Сумата трябва да е положително число")]
         public decimal FourthGroupSum { get; set; }
     }
 }

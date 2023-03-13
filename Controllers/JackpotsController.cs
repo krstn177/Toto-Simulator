@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using System.Data;
 using Toto_Simulator.Data;
 using Toto_Simulator.Data.Entities;
+using Toto_Simulator.Models;
 
 namespace Toto_Simulator.Controllers
 {
@@ -37,6 +40,54 @@ namespace Toto_Simulator.Controllers
             }
 
             return View(jackpots);
-        }       
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            var jackpot = this.data.Jackpots.Where(j => j.Id == id).FirstOrDefault();
+            if (id == null || this.data.Jackpots == null)
+            {
+                return NotFound();
+            }
+
+            if (jackpot == null)
+            {
+                return NotFound();
+            }
+            
+            return View(jackpot);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Edit(int id, Jackpot edited)
+        {
+            var jackpot = this.data.Jackpots.Where(j => j.Id == id).FirstOrDefault();
+            if (jackpot == null)
+            {
+                return BadRequest();
+            }
+
+            jackpot.AccumulatedSum = edited.AccumulatedSum;
+            
+            this.data.SaveChanges();
+            return RedirectToAction("Index", "Jackpots");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int? id)
+        {
+            Jackpot jackpot = this.data.Jackpots.Find(id);
+            if (jackpot == null)
+            {
+                return BadRequest();
+            }
+           
+            this.data.Jackpots.Remove(jackpot);
+            this.data.SaveChanges();
+            return RedirectToAction("Index", "Jackpots");
+        }
     }
 }

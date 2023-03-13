@@ -1,0 +1,30 @@
+﻿@using Toto_Simulator.Data.Entities;
+@model Jackpot;
+
+@{
+    ViewData["Title"] = "Редакция на джакпот";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-action="Edit" method="post">
+
+
+            <div class="mb-3">
+                <label asp-for="AccumulatedSum" class="form-label">Натрупана сума</label>
+                <input asp-for="AccumulatedSum" step="0.01" type="number" class="form-control" aria-required="true" />
+                <span asp-validation-for="AccumulatedSum" class="text-danger"></span>
+            </div>
+           
+            <div class="mb-3 mt-3">
+                <input class="btn btn-success" type="submit" value="Редактирай" />
+            </div>
+
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+ }
