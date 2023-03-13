@@ -13,24 +13,28 @@ namespace Toto_Simulator.Controllers
         {
             this.data = context;
         }
-        public IActionResult Index(string idSortOrder, string sumSortOrder)
+        public IActionResult Index(string sortOrder)
         {
-            ViewData["IdSortParam"] = string.IsNullOrEmpty(idSortOrder) ? "desc" : "";          
-            ViewData["SumSortParam"] = string.IsNullOrEmpty(sumSortOrder) ? "desc" : "";
+            ViewData["IdSortParam"] = string.IsNullOrEmpty(sortOrder) ? "id_desc" : "";          
+            ViewData["SumSortParam"] = sortOrder == "Sum" ? "sum_desc" : "Sum";
             
             IQueryable<Jackpot> jackpots = from j in this.data.Jackpots select j;
 
-            jackpots = idSortOrder switch
+            switch (sortOrder)
             {
-                "desc" => jackpots.OrderByDescending(j => j.Id),
-                _ => jackpots.OrderBy(j => j.Id),
-            };
-
-            jackpots = sumSortOrder switch
-            {
-                "desc" => jackpots.OrderByDescending(j => j.AccumulatedSum),
-                _ => jackpots.OrderBy(j => j.AccumulatedSum),
-            };
+                case "id_desc":
+                    jackpots = jackpots.OrderByDescending(s => s.Id);
+                    break;
+                case "Sum":
+                    jackpots = jackpots.OrderBy(s => s.AccumulatedSum);
+                    break;
+                case "sum_desc":
+                    jackpots = jackpots.OrderByDescending(s => s.AccumulatedSum);
+                    break;
+                default:
+                    jackpots = jackpots.OrderBy(s => s.Id);
+                    break;
+            }
 
             return View(jackpots);
         }       
