@@ -7,10 +7,10 @@ namespace Toto_Simulator.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        [Range(1, 5,
-            ErrorMessage = "Цената за билет трябва да е между 1 и 5 лева")]
-        public decimal Price { get; set; }
+        //[Required]
+        //[Range(1, 5,
+        //    ErrorMessage = "Цената за билет трябва да е между 1 и 5 лева")]
+        //public decimal Price { get; set; }
         
 
         [Required]

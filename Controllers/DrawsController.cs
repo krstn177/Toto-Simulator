@@ -130,6 +130,7 @@ namespace Toto_Simulator.Controllers
             return RedirectToAction("All", "Draws");
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateDraw()
         {
             var oldDraw = this.data.Draws.OrderBy(d => d.Date).Last();

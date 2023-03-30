@@ -49,6 +49,8 @@ namespace Toto_Simulator.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult AllUsers(string searchedName, string sortOrder, int? pageIndex, int pageSize = 5)
         {
+            ViewData["sortOrder"] = sortOrder;
+            ViewData["pageSize"] = pageSize;
             ViewData["NameSortParam"] = string.IsNullOrEmpty(sortOrder) ? "desc" : "";
 
             IQueryable<User> users =  from u in context.Users select u;

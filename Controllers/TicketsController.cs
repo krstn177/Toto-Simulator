@@ -23,6 +23,8 @@ namespace Toto_Simulator.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult AllTickets(string sortOrder, int? pageIndex, int pageSize = 5)
         {
+            ViewData["sortOrder"] = sortOrder;
+            ViewData["pageSize"] = pageSize;
             ViewData["IdSortParam"] = string.IsNullOrEmpty(sortOrder) ? "desc" : "";
 
             string currentUserId = GetUserId();
@@ -49,6 +51,8 @@ namespace Toto_Simulator.Controllers
         [HttpGet]
         public IActionResult Index(string sortOrder, int? pageIndex, int pageSize = 5)
         {
+            ViewData["sortOrder"] = sortOrder;
+            ViewData["pageSize"] = pageSize;
             ViewData["IdSortParam"] = string.IsNullOrEmpty(sortOrder) ? "desc" : "";
 
             string currentUserId = GetUserId();
@@ -102,7 +106,7 @@ namespace Toto_Simulator.Controllers
             
             Ticket ticket = new Ticket()
             {
-                Price = ticketModel.Price,
+                Price = 5,
                 DrawId = currentDraw.Id,
                 Date = DateTime.Now,                
                 OwnerId = currentUserId,                
@@ -142,7 +146,7 @@ namespace Toto_Simulator.Controllers
 
             TicketFormModel ticketModel = new TicketFormModel() 
             { 
-                Price = ticket.Price,
+                //Price = ticket.Price,
                 First = ticket.Numbers[0].Value,
                 Second = ticket.Numbers[1].Value,
                 Third = ticket.Numbers[2].Value,
@@ -174,7 +178,7 @@ namespace Toto_Simulator.Controllers
                 ticketModel.Sixth
             };
             
-            ticket.Price = ticketModel.Price;
+            //ticket.Price = ticketModel.Price;
             
 
             if (HasDuplicates(chosenNums))

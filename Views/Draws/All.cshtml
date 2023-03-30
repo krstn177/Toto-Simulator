@@ -3,8 +3,14 @@
 @{
     ViewData["Title"] = "Тиражи";
 }
-<a asp-controller="Draws" asp-action="CreateDraw" class="btn btn-success mb-2 align-self-auto">Изтегляне на тираж</a>
-<div class="d-flex justify-content-start flex-lg-wrap gap-3">    
+@if (this.User.IsInRole("Admin"))
+{
+    <div style="margin: 30px auto; display: flex; justify-content: center">
+        <a asp-controller="Draws" asp-action="CreateDraw" class="btn btn-success mb-2 align-self-auto">Изтегляне на тираж</a>
+    </div>
+}
+
+<div class="d-flex justify-content-around flex-lg-wrap gap-3">    
     @foreach (var draw in Model)
     {
         @if (draw != Model.FirstOrDefault())
@@ -13,7 +19,7 @@
             <div class="card flex-column" style="width: 20rem;">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><span class="fw-bold">Пореден Номер: </span> @draw.Id</li>
-                    <li class="list-group-item"><span class="fw-bold">Дата: </span> @draw.Date</li>
+                    <li class="list-group-item"><span class="fw-bold">Дата: </span> @draw.Date.ToString("dd/MM/yyyy")</li>
                     <li class="list-group-item"><span class="fw-bold">Награден фонд: </span> : @draw.Fund</li>
                     <li class="list-group-item">
                             <ul class="list-group list-group-horizontal">

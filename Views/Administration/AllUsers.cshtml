@@ -25,11 +25,31 @@
                     </form>
                 </div>
                 <div class="mb-3" style="margin: 0 auto;">
-                    <a asp-action="AllUsers" asp-route-pageSize="5" class="btn btn-outline-warning mx-1">5</a>
-                    <a asp-action="AllUsers" asp-route-pageSize="10" class="btn btn-outline-warning mx-1">10</a>
-                    <a asp-action="AllUsers" asp-route-pageSize="15" class="btn btn-outline-warning mx-1">15</a>
+                    <a asp-action="AllUsers"
+                       asp-route-pageSize="5"
+                       asp-route-sortOrder="@ViewData["sortOrder"]"
+                       class="btn btn-outline-warning mx-1">
+                        5
+                    </a>
+                    <a asp-action="AllUsers"
+                       asp-route-pageSize="10"
+                       asp-route-sortOrder="@ViewData["sortOrder"]"
+                       class="btn btn-outline-warning mx-1">
+                        10
+                    </a>
+                    <a asp-action="AllUsers"
+                       asp-route-pageSize="15"
+                       asp-route-sortOrder="@ViewData["sortOrder"]"
+                       class="btn btn-outline-warning mx-1">
+                        15
+                    </a>
                 </div>
-                <a asp-action="AllUsers" asp-route-sortOrder="@ViewData["NameSortParam"]" class="btn btn-outline-warning">Сортирай по име</a>
+                <a asp-action="AllUsers"
+                   asp-route-sortOrder="@ViewData["NameSortParam"]"
+                   asp-route-pageSize="@ViewData["pageSize"]"
+                   class="btn btn-outline-warning">
+                    Сортирай по име
+                </a>
             </div>
         </div>
         <div class="card-body table-responsive p-0">
@@ -82,11 +102,23 @@
 
         <ul class="pagination justify-content-center">
             <li class="page-item @prevActive">
-                <a asp-action="Index" asp-route-pageIndex="@(Model.PageIndex - 1)" class="page-link">Назад</a>
+                <a asp-action="Index"
+                   asp-route-pageIndex="@(Model.PageIndex - 1)"
+                   asp-route-sortOrder="@ViewData["sortOrder"]"
+                   asp-route-pageSize="@ViewData["pageSize"]"
+                   class="page-link">
+                    Назад
+                </a>
             </li>
             <li class="page-item @nextActive">
-                <a asp-action="Index" asp-route-pageIndex="@(Model.PageIndex + 1)" class="page-link">Напред</a>
+                <a asp-action="Index"
+                   asp-route-pageIndex="@(Model.PageIndex + 1)"
+                   asp-route-sortOrder="@ViewData["sortOrder"]"
+                   asp-route-pageSize="@ViewData["pageSize"]"
+                   class="page-link">
+                    Напред
+                </a>
             </li>
-        </ul>        
+        </ul>
     </div>
 </div>
