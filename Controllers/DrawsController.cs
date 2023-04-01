@@ -8,6 +8,7 @@ using System.Linq;
 using Toto_Simulator.Data;
 using Toto_Simulator.Data.Entities;
 using Toto_Simulator.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Toto_Simulator.Controllers
 {
@@ -20,7 +21,7 @@ namespace Toto_Simulator.Controllers
             this.data = context;
         }
         
-        public IActionResult All()
+        public IActionResult All(DateTime? fromDate, DateTime? toDate)
         {
             var draws = this.data.Draws.Select(d => new DrawViewModel()
             {
@@ -39,7 +40,17 @@ namespace Toto_Simulator.Controllers
 
             }).ToList().OrderByDescending(d => d.Date);
 
-            return View(draws);
+            var latestDraw = draws.FirstOrDefault();
+            var viewDraws = draws.Where(d => d.Id != latestDraw.Id).ToList();
+
+            if (fromDate != null && toDate != null)
+            {
+                var selectedDraws = viewDraws.Where(d => d.Date >= fromDate && d.Date <= toDate).ToList();
+                return View(selectedDraws);
+
+            }
+
+            return View(viewDraws);
         }
 
         //public IActionResult SetDrawInterval(int interval)
