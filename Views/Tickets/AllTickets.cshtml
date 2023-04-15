@@ -49,13 +49,12 @@
                     <ul class="list-group list-group-horizontal">
                         @foreach (var num in ticket.Numbers)
                         {
-                            <li class="list-group-item border border-success bg-success" style="width: 52px">@num.Value</li>
+                            <li class="list-group-item border border-light bg-success text-white" style="width: 52px">@num.Value</li>
                         }
                     </ul>
                 </li>
-                <li class="list-group-item">
-                    <a asp-controller="Tickets" asp-action="Edit" asp-route-id="@ticket.Id" class="btn btn-primary mb-2">Редакция</a>
-                    <span></span>
+                <li class="list-group-item d-flex justify-content-around">
+                    <a asp-controller="Tickets" asp-action="Edit" asp-route-id="@ticket.Id" class="btn btn-primary mb-2">Редакция</a>                    
                     <form asp-action="Delete" asp-route-id="@ticket.Id">
                         <input type="submit" value="Изтриване" class="btn btn-danger" />
                     </form>

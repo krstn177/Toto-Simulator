@@ -12,21 +12,20 @@
 <div class="d-flex justify-content-around flex-lg-wrap gap-3">  
     @foreach (var jackpot in Model)
     {
-        <div class="card flex-column" style="width: 20rem;">
+        <div class="card flex-column border border-dark rounded-3" style="width: 20rem;">
             <ul class="list-group list-group-horizontal">
                 <li class="list-group-item"><span class="fw-bold">Номер на джакпот: </span> @jackpot.Id</li>
                 <li class="list-group-item"><span class="fw-bold">Натрупана сума: </span> : @jackpot.AccumulatedSum</li>
             </ul>
-            <div class="align-self-center">
-                @if (this.User.IsInRole("Admin"))
-                {                   
-                   <a asp-controller="Jackpots" asp-action="Edit" asp-route-id="@jackpot.Id" class="btn btn-primary mb-2">Редакция</a>
-                   <span></span>
-                   <form asp-action="Delete" asp-route-id="@jackpot.Id">
-                       <input type="submit" value="Изтриване" class="btn btn-danger" />
-                   </form>              
-                }
-            </div>
+            @if (this.User.IsInRole("Admin"))
+            {
+              <div class="align-self-center d-flex justify-content-around mt-2 w-100">
+                 <a asp-controller="Jackpots" asp-action="Edit" asp-route-id="@jackpot.Id" class="btn btn-primary mb-2">Редакция</a>
+                 <form asp-action="Delete" asp-route-id="@jackpot.Id">
+                    <input type="submit" value="Изтриване" class="btn btn-danger" />
+                 </form>              
+              </div>
+            }
         </div>
     }
 </div>
