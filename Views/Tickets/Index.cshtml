@@ -5,7 +5,7 @@
 }
 <div class="d-flex justify-content-around">
     <div class="flex-column" style="width: 20rem;">
-        <a asp-controller="Tickets" asp-action="Create" class="btn btn-success mb-2 align-self-auto">Попълни талон</a>
+        <a asp-controller="Tickets" asp-action="Create" class="btn btn-success mb-2 align-self-auto"><i class="fa-solid fa-pen-to-square"></i> Попълни талон</a>
         <a asp-action="Index"
            asp-route-sortOrder="@ViewData["IdSortParam"]"
            asp-route-pageSize="@ViewData["pageSize"]"
@@ -13,36 +13,41 @@
             Сортирай по номер
         </a>
     </div>
-    <div class="flex-column" style="width: 20rem;">
+    <div class="flex-column d-flex" style="width: 20rem;">
+        <div class="flex-row d-flex">
+            <p>Брой елементи на страница</p>
+        </div>
+        <div class="flex-row d-flex">
 
-        <a asp-action="Index"
-           asp-route-pageSize="5"
-           asp-route-sortOrder="@ViewData["sortOrder"]"
-           class="btn btn-outline-success mx-2">
-            5
-        </a>
-        <a asp-action="Index"
-           asp-route-pageSize="10"
-           asp-route-sortOrder="@ViewData["sortOrder"]"
-           class="btn btn-outline-success mx-2">
-            10
-        </a>
-        <a asp-action="Index"
-           asp-route-pageSize="15"
-           asp-route-sortOrder="@ViewData["sortOrder"]"
-           class="btn btn-outline-success mx-2">
-            15
-        </a>
+            <a asp-action="Index"
+               asp-route-pageSize="5"
+               asp-route-sortOrder="@ViewData["sortOrder"]"
+               class="btn btn-outline-success mx-2">
+                5
+            </a>
+            <a asp-action="Index"
+               asp-route-pageSize="10"
+               asp-route-sortOrder="@ViewData["sortOrder"]"
+               class="btn btn-outline-success mx-2">
+                10
+            </a>
+            <a asp-action="Index"
+               asp-route-pageSize="15"
+               asp-route-sortOrder="@ViewData["sortOrder"]"
+               class="btn btn-outline-success mx-2">
+                15
+            </a>
+        </div>
 
     </div>
-    <div class="flex-column" style="width: 20rem;">
+    <div class="flex-column fw-bold" style="width: 20rem; font-size: 1.7rem">
         <span>Печалби: </span> @Model.Last().Owner.Earnings
     </div>
 </div>
 <div class="d-flex justify-content-around flex-lg-wrap gap-3">
     @foreach (var ticket in Model)
     {
-        <div class="card flex-column" style="width: 20rem;">
+        <div class="card flex-column border border-success" style="width: 21rem;">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><span class="fw-bold">Номер на талон: </span> @ticket.Id</li>
                 <li class="list-group-item"><span class="fw-bold">Дата: </span> @ticket.Date.ToString("dd/MM/yyyy")</li>
@@ -50,11 +55,11 @@
                 <li class="list-group-item"><span class="fw-bold">Номер на тираж: </span> : @ticket.DrawId</li>
                 <li class="list-group-item"><span class="fw-bold">Играч: </span> : @ticket.Owner.UserName</li>
                 <li class="list-group-item">
-                    <ul class="list-group list-group-horizontal">
-                        @foreach (var num in ticket.Numbers)
-                        {
-                            <li class="list-group-item">@num.Value</li>
-                        }
+                    <ul class="list-group list-group-horizontal d-flex justify-content-around"> 
+                         @foreach (var num in ticket.Numbers)
+                         {
+                                <li class="list-group-item border border-light bg-success text-white" style="width: 52px">@num.Value</li>
+                         }              
                     </ul>
                 </li>
             </ul>
@@ -67,7 +72,7 @@
 
 }
 
-<ul class="pagination justify-content-center">
+<ul class="pagination justify-content-center mt-4">
     <li class="page-item @prevActive">
         <a asp-action="Index"
            asp-route-pageIndex="@(Model.PageIndex - 1)"

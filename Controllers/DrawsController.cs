@@ -21,7 +21,7 @@ namespace Toto_Simulator.Controllers
             this.data = context;
         }
         
-        public IActionResult All(DateTime? fromDate, DateTime? toDate)
+        public IActionResult All(DateTime? fromDate, DateTime? toDate, int? fromId, int? toId)
         {
             var draws = this.data.Draws.Select(d => new DrawViewModel()
             {
@@ -46,6 +46,13 @@ namespace Toto_Simulator.Controllers
             if (fromDate != null && toDate != null)
             {
                 var selectedDraws = viewDraws.Where(d => d.Date >= fromDate && d.Date <= toDate).ToList();
+                return View(selectedDraws);
+
+            }
+
+            if ((fromId != null && fromId > 0) && (toId != null && toId > 0))
+            {
+                var selectedDraws = viewDraws.Where(d => d.Id >= fromId && d.Id <= toId).ToList();
                 return View(selectedDraws);
 
             }

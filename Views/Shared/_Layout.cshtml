@@ -22,34 +22,34 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Начална страница</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ml-5">
+                    <ul class="navbar-nav flex-grow-1 gap-3">
+                        <li class="nav-item border border-success rounded-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i> Начало</a>
                         </li>
                         @if (this.User.IsInRole("Admin"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Administration" asp-action="AllUsers">Всички потребители</a>
+                            <li class="nav-item border border-success rounded-3">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Administration" asp-action="AllUsers"><i class="fa-solid fa-user"></i> Всички потребители</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="AllTickets">Всички талони</a>
+                            <li class="nav-item border border-success rounded-3">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="AllTickets"><i class="fa-regular fa-square-check"></i> Всички талони</a>
                             </li>
                         }
                         @if (this.User.IsInRole("Player"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Index">Моите талони</a>
+                            <li class="nav-item border border-success rounded-3">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Index"><i class="fa-regular fa-square-check"></i> Моите талони</a>
                             </li>                           
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Draws" asp-action="All">Списък с тиражи</a>
+                        <li class="nav-item border border-success rounded-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Draws" asp-action="All"><i class="fa-solid fa-table-list"></i> Списък с тиражи</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Numbers" asp-action="Index">Числа</a>
+                        <li class="nav-item border border-success rounded-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Numbers" asp-action="Index"><i class="fa-solid fa-list-ol"></i> Числа</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Jackpots" asp-action="Index">Джакпоти</a>
+                        <li class="nav-item border border-success rounded-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Jackpots" asp-action="Index"><i class="fa-solid fa-money-bill-1-wave"></i> Джакпоти</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -63,7 +63,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted text-center">
         <div class="container">
             &copy; 2023 - Toto_Simulator
         </div>

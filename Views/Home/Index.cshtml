@@ -1,8 +1,45 @@
 ﻿@{
     ViewData["Title"] = "Начална страница";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Добре дошли, в Тото Симулатор!</h1>
-    <p>Играйте най-популярната хазартна игра в България</p>
+<!-- Hero -->
+<div class="text-center bg-image" style="
+    background-image: url('toto.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 614px;
+    overflow: hidden;
+    border-radius: 20px;
+  ">
+    <div class="mask" style="
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    ">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+                <h1 class="mb-3">Добре дошли, в Тото Симулатор!</h1>
+                <h4 class="mb-3">Играйте най-популярната хазартна игра в България</h4>              
+                <a class="btn btn-outline-success btn-lg" role="button" asp-controller="Draws" asp-action="All">Разгледай тиражите</a>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Hero -->
+
+<!---->
+<section class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="text-center fw-bold">За нас</h2>
+            <p style="font-size: 1.2rem; line-height: 1.6;">
+                Тото симулаторът е онлайн платформа, която предоставя на потребителите възможността да тестват късмета си, без да инвестират истински пари. Симулаторът възпроизвежда автентичните условия на тотото, като генерира случайни числа и позволява на потребителите да опитват различни комбинации и да разглеждат резултатите и печалбите си.
+            </p>
+            <p style="font-size: 1.2rem; line-height: 1.6;">
+                Създаден с цел да бъде забавен и образователен, тото симулаторът позволява на потребителите да участват в тегления без да се излагат на истински финансови загуби. Това прави платформата подходяща за всички, които се интересуват от лотарийните игри и искат да тестват възможностите на късмета си.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="images/360_F_139341642_xOafx7guQNPezZ7YsX8cyrBTTdx7i6RV.jpg" alt="About us image" class="img-fluid" style="max-width: 100%; height: auto; border-radius: 20px;">
+        </div>
+    </div>
+</section>

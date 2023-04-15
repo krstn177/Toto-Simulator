@@ -38,7 +38,7 @@
 <div class="d-flex justify-content-around flex-lg-wrap gap-3">
     @foreach (var ticket in Model)
     {
-        <div class="card flex-column" style="width: 20rem;">
+        <div class="card flex-column border border-success" style="width: 21rem;">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><span class="fw-bold">Номер на талон: </span> @ticket.Id</li>
                 <li class="list-group-item"><span class="fw-bold">Дата: </span> @ticket.Date.ToString("dd/MM/yyyy")</li>
@@ -49,7 +49,7 @@
                     <ul class="list-group list-group-horizontal">
                         @foreach (var num in ticket.Numbers)
                         {
-                            <li class="list-group-item">@num.Value</li>
+                            <li class="list-group-item border border-success bg-success" style="width: 52px">@num.Value</li>
                         }
                     </ul>
                 </li>

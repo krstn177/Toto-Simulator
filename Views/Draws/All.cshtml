@@ -10,17 +10,34 @@
     </div>
 }
 
-<form asp-controller="Draws" asp-action="All" style="display: block; margin: 0 auto; width: 200px; text-align: center;">
-    <label>От:</label>
-    <input type="date" name="fromDate" class="form-control" placeholder="От" style="margin: 0 auto; width: 100%">
-    <label>До:</label>
-    <input type="date" name="toDate" class="form-control" placeholder="От" style="margin: 0 auto; width: 100%">
-    <div class="input-group-append">
-        <button type="submit" class="btn btn-default">
-            <i class="fas fa-search"></i>
-        </button>
-    </div>
-</form>
+<div style="display: flex; justify-content: space-around; margin-bottom: 50px;">
+
+    <form asp-controller="Draws" asp-action="All" style="display: block; margin: 0 auto; width: 200px; text-align: center;">
+        <h5>Сортирай по дата</h5>
+        <label>От:</label>
+        <input type="date" name="fromDate" class="form-control" placeholder="От" style="margin: 0 auto; width: 100%">
+        <label>До:</label>
+        <input type="date" name="toDate" class="form-control" placeholder="От" style="margin: 0 auto; width: 100%">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-default">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+
+    <form asp-controller="Draws" asp-action="All" style="display: block; margin: 0 auto; width: 200px; text-align: center;">
+        <h5>Сортирай по номер</h5>
+        <label>От:</label>
+        <input type="number" name="fromId" class="form-control" placeholder="От" style="margin: 0 auto; width: 100%">
+        <label>До:</label>
+        <input type="number" name="toId" class="form-control" placeholder="От" style="margin: 0 auto; width: 100%">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-default">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+</div>
 
 
 <div class="d-flex justify-content-around flex-lg-wrap gap-3">    
@@ -28,8 +45,8 @@
     {
         @*@if (draw != Model.FirstOrDefault())
         {*@
-            
-            <div class="card flex-column" style="width: 20rem;">
+
+        <div class="card flex-column border border-success" style="width: 21rem;">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><span class="fw-bold">Пореден Номер: </span> @draw.Id</li>
                     <li class="list-group-item"><span class="fw-bold">Дата: </span> @draw.Date.ToString("dd/MM/yyyy")</li>
@@ -38,12 +55,12 @@
                             <ul class="list-group list-group-horizontal">
                                 @foreach (var num in draw.Numbers)
                                 {
-                                    <li class="list-group-item">@num.Value</li>                
+                                    <li class="list-group-item border border-light bg-success text-white" style="width: 52px">@num.Value</li>
                                 }
                             </ul>
                     </li>
                     <li class="list-group-item">
-                       <ul class="list-group list-group-horizontal">
+                    <ul class="list-group list-group-horizontal border border-success">
 
                             <li class="list-group-item"><span class="fw-bold">1ва група печеливши: </span>@draw.FirstGroupWinners</li>
                             <li class="list-group-item"><span class="fw-bold">Натрупана сума: </span>@draw.FirstGroupSum</li>
@@ -51,7 +68,7 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                       <ul class="list-group list-group-horizontal">
+                    <ul class="list-group list-group-horizontal border border-success">
 
                             <li class="list-group-item"><span class="fw-bold">2ра група печеливши: </span>@draw.SecondGroupWinners</li>
                             <li class="list-group-item"><span class="fw-bold">Натрупана сума: </span>@draw.SecondGroupSum</li>
@@ -59,7 +76,7 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                       <ul class="list-group list-group-horizontal">
+                    <ul class="list-group list-group-horizontal border border-success">
 
                             <li class="list-group-item"><span class="fw-bold">3та група печеливши: </span>@draw.ThirdGroupWinners</li>
                             <li class="list-group-item"><span class="fw-bold">Натрупана сума: </span>@draw.ThirdGroupSum</li>
@@ -67,7 +84,7 @@
                         </ul>
                     </li>
                     <li class="list-group-item">
-                       <ul class="list-group list-group-horizontal">
+                    <ul class="list-group list-group-horizontal border border-success">
 
                             <li class="list-group-item"><span class="fw-bold">4та група печеливши: </span>@draw.FourthGroupWinners</li>
                             <li class="list-group-item"><span class="fw-bold">Натрупана сума: </span>@draw.FourthGroupSum</li>
