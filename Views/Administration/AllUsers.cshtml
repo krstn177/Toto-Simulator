@@ -77,7 +77,7 @@
                                 @if (user.Roles.FirstOrDefault() == "Admin")
                                 {
                                     @*<a asp-area="Admin" asp-action="MakeAdmin" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning"><i class="fas fa-edit"></i>Make Admin</a>*@
-                                    <a asp-action="MakePlayer" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning"><i class="fas fa-edit"></i>Направи Играч</a>
+                                    <a asp-action="MakePlayer" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-app bg-warning"><i class="fas fa-edit"></i>Направи Участник</a>
                                 }
                                 @if (user.Roles.FirstOrDefault() == "Player")
                                 {

@@ -44,7 +44,7 @@
                 <li class="list-group-item"><span class="fw-bold">Дата: </span> @ticket.Date.ToString("dd/MM/yyyy")</li>
                 <li class="list-group-item"><span class="fw-bold">Цена: </span> : @ticket.Price</li>
                 <li class="list-group-item"><span class="fw-bold">Номер на тираж: </span> : @ticket.DrawId</li>
-                <li class="list-group-item"><span class="fw-bold">Играч: </span> : @ticket.Owner.UserName</li>
+                <li class="list-group-item"><span class="fw-bold">Участник: </span> : @ticket.Owner.UserName</li>
                 <li class="list-group-item">
                     <ul class="list-group list-group-horizontal">
                         @foreach (var num in ticket.Numbers)
