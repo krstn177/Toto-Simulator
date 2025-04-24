@@ -314,12 +314,12 @@ namespace Toto_Simulator.Controllers
             //var num5 = data.Numbers.Where(n => n.Value == 5).FirstOrDefault();
             //var num6 = data.Numbers.Where(n => n.Value == 6).FirstOrDefault();
 
-                //currentDraw.Numbers.Add(num1);
-                //currentDraw.Numbers.Add(num2);
-                //currentDraw.Numbers.Add(num3);
-                //currentDraw.Numbers.Add(num4);
-                //currentDraw.Numbers.Add(num5);
-                //currentDraw.Numbers.Add(num6);
+            //currentDraw.Numbers.Add(num1);
+            //currentDraw.Numbers.Add(num2);
+            //currentDraw.Numbers.Add(num3);
+            //currentDraw.Numbers.Add(num4);
+            //currentDraw.Numbers.Add(num5);
+            //currentDraw.Numbers.Add(num6);
         }
     }
 }
